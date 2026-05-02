@@ -1,0 +1,45 @@
+<%- include("../partials/head") %>
+<%- include("../partials/navbar") %>
+<%- include("../partials/flash") %>
+
+<div class="container" style="margin-top: 30px;">
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">Dashboard de administrador</span>
+      <p>Lista de usuarios registrados.</p>
+
+      <table class="striped responsive-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+            <th>Edad</th>
+            <th>Roles</th>
+            <th>Registro</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.forEach(user => { %>
+            <tr>
+              <td><%= user.name %> <%= user.lastName %></td>
+              <td><%= user.email %></td>
+              <td><%= user.phoneNumber %></td>
+              <td><%= user.age ?? '-' %></td>
+              <td><%= user.roles.join(", ") %></td>
+              <td><%= new Date(user.createdAt).toLocaleString() %></td>
+              <td>
+                <a href="/dashboard-admin/users/<%= user.id %>" class="btn-small teal darken-2">
+                  Ver
+                </a>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%- include("../partials/scripts") %>

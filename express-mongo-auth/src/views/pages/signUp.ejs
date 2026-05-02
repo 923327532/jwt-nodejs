@@ -1,0 +1,65 @@
+<%- include("../partials/head") %>
+<%- include("../partials/navbar") %>
+<%- include("../partials/flash") %>
+
+<div class="container" style="margin-top: 40px; max-width: 760px;">
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">Registro de usuario</span>
+
+      <form action="/signUp" method="POST">
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <input id="name" name="name" type="text" required />
+            <label for="name">Nombres</label>
+          </div>
+
+          <div class="input-field col s12 m6">
+            <input id="lastName" name="lastName" type="text" required />
+            <label for="lastName">Apellidos</label>
+          </div>
+
+          <div class="input-field col s12 m6">
+            <input id="phoneNumber" name="phoneNumber" type="text" required />
+            <label for="phoneNumber">Teléfono</label>
+          </div>
+
+          <div class="input-field col s12 m6">
+            <input id="birthdate" name="birthdate" type="date" required />
+            <label for="birthdate" class="active">Fecha de nacimiento</label>
+          </div>
+
+          <div class="input-field col s12">
+            <input id="email" name="email" type="email" required />
+            <label for="email">Email</label>
+          </div>
+
+          <div class="input-field col s12">
+            <input id="password" name="password" type="password" required />
+            <label for="password">Password</label>
+            <span class="helper-text">
+              Mín. 8 caracteres, 1 mayúscula, 1 número y 1 caracter especial (# $ % & * @)
+            </span>
+          </div>
+
+          <div class="input-field col s12">
+            <input id="url_profile" name="url_profile" type="url" />
+            <label for="url_profile">URL de foto de perfil</label>
+          </div>
+
+          <div class="input-field col s12">
+            <input id="adress" name="adress" type="text" />
+            <label for="adress">Dirección</label>
+          </div>
+        </div>
+
+        <button class="btn waves-effect waves-light teal darken-2" type="submit">
+          Registrarme
+        </button>
+        <a href="/signIn" class="btn-flat">Ya tengo cuenta</a>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include("../partials/scripts") %>

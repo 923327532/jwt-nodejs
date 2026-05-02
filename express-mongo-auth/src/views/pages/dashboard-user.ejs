@@ -1,0 +1,23 @@
+<%- include("../partials/head") %>
+<%- include("../partials/navbar") %>
+<%- include("../partials/flash") %>
+
+<div class="container" style="margin-top: 30px;">
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">Dashboard de usuario</span>
+      <p>Bienvenido, <strong><%= user.name %> <%= user.lastName %></strong>.</p>
+      <br>
+      <ul class="collection">
+        <li class="collection-item"><strong>Email:</strong> <%= user.email %></li>
+        <li class="collection-item"><strong>Teléfono:</strong> <%= user.phoneNumber %></li>
+        <li class="collection-item"><strong>Edad:</strong> <%= user.age %></li>
+        <li class="collection-item"><strong>Roles:</strong> <%= user.roles.join(", ") %></li>
+        <li class="collection-item"><strong>Fecha de registro:</strong> <%= new Date(user.createdAt).toLocaleString() %></li>
+      </ul>
+      <a href="/profile" class="btn teal darken-2">Ir a mi cuenta</a>
+    </div>
+  </div>
+</div>
+
+<%- include("../partials/scripts") %>

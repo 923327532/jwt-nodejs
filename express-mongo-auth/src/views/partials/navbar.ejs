@@ -1,0 +1,22 @@
+<nav class="teal darken-2">
+  <div class="nav-wrapper container">
+    <a href="/" class="brand-logo">JWT App</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <% if (currentUser) { %>
+        <li><a href="/profile">Mi cuenta</a></li>
+        <% if (currentUser.roles.includes("admin")) { %>
+          <li><a href="/dashboard-admin">Admin</a></li>
+        <% } %>
+        <li><a href="/dashboard-user">Usuario</a></li>
+        <li>
+          <form action="/logout" method="POST" style="display:inline;">
+            <button class="btn-flat white-text" type="submit">Cerrar sesión</button>
+          </form>
+        </li>
+      <% } else { %>
+        <li><a href="/signIn">Sign In</a></li>
+        <li><a href="/signUp">Sign Up</a></li>
+      <% } %>
+    </ul>
+  </div>
+</nav>

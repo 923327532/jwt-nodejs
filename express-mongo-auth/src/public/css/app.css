@@ -1,0 +1,25 @@
+body {
+  min-height: 100vh;
+}
+
+nav .brand-logo {
+  font-size: 1.5rem;
+}
+
+.card .card-title {
+  font-weight: 600;
+}
+
+.collection-item strong {
+  margin-right: 8px;
+}
+
+.btn-flat.white-text {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+img.circle.responsive-img {
+  border: 4px solid #e0f2f1;
+}

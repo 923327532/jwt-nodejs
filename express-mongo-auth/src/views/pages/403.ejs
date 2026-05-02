@@ -1,0 +1,11 @@
+<%- include("../partials/head") %>
+<%- include("../partials/navbar") %>
+
+<div class="container center-align" style="margin-top: 60px;">
+  <i class="large material-icons red-text">block</i>
+  <h3>403 - Acceso denegado</h3>
+  <p><%= typeof message !== 'undefined' ? message : 'No tienes permisos suficientes para acceder a esta página.' %></p>
+  <a href="/signIn" class="btn teal darken-2">Ir a Sign In</a>
+</div>
+
+<%- include("../partials/scripts") %>
