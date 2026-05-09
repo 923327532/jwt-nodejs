@@ -29,7 +29,7 @@ app.use(methodOverride("_method"));
 
 app.use(
   session({
-    secret: process.env.SESSION_SECRET ?? "super-secret-session",
+    secret: process.env.SESSION_SECRET || "super-secret-session",
     resave: false,
     saveUninitialized: false,
   })
@@ -71,9 +71,15 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 3000;
+const MONGODB_URI = process.env.MONGODB_URI;
+
+if (!MONGODB_URI) {
+  console.error("Falta la variable de entorno MONGODB_URI");
+  process.exit(1);
+}
 
 mongoose
-  .connect(process.env.MONGODBURI, { autoIndex: true })
+  .connect(MONGODB_URI, { autoIndex: true })
   .then(async () => {
     console.log("Mongo connected");
     await seedRoles();
