@@ -9,7 +9,7 @@ export default function authenticate(req, res, next) {
     }
 
     const token = header.split(" ")[1];
-    const payload = jwt.verify(token, process.env.JWTSECRET);
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
 
     req.userId = payload.sub;
     req.userRoles = payload.roles || [];
