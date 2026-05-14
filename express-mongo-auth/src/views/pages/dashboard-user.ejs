@@ -8,6 +8,7 @@
       <span class="card-title">Dashboard de usuario</span>
       <p>Bienvenido, <strong><%= user.name %> <%= user.lastName %></strong>.</p>
       <br>
+
       <ul class="collection">
         <li class="collection-item"><strong>Email:</strong> <%= user.email %></li>
         <li class="collection-item"><strong>Teléfono:</strong> <%= user.phoneNumber %></li>
@@ -15,9 +16,39 @@
         <li class="collection-item"><strong>Roles:</strong> <%= user.roles.join(", ") %></li>
         <li class="collection-item"><strong>Fecha de registro:</strong> <%= new Date(user.createdAt).toLocaleString() %></li>
       </ul>
+
       <a href="/profile" class="btn teal darken-2">Ir a mi cuenta</a>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 25px;">
+    <div class="card-content">
+      <span class="card-title">Mi galería en S3</span>
+
+      <div class="row" style="margin-bottom: 0;">
+        <div class="input-field col s12 m8">
+          <input
+            type="file"
+            id="file"
+            accept="image/jpeg,image/png,image/webp"
+          />
+        </div>
+
+        <div class="col s12 m4" style="margin-top: 10px;">
+          <button id="uploadBtn" class="btn blue darken-2 waves-effect waves-light">
+            Subir imagen
+          </button>
+        </div>
+      </div>
+
+      <p id="status" class="green-text text-darken-2" style="font-weight: 600;"></p>
+
+      <div class="divider" style="margin: 20px 0;"></div>
+
+      <div id="gallery" class="row"></div>
     </div>
   </div>
 </div>
 
+<script src="/js/app.js"></script>
 <%- include("../partials/scripts") %>

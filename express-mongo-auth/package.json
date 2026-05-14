@@ -11,6 +11,8 @@
   "author": "earevalo",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1045.0",
+    "@aws-sdk/s3-request-presigner": "^3.1045.0",
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
@@ -19,7 +21,8 @@
     "express-session": "^1.19.0",
     "jsonwebtoken": "^9.0.0",
     "method-override": "^3.0.0",
-    "mongoose": "^7.0.0"
+    "mongoose": "^7.0.0",
+    "multer": "^2.1.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.0"

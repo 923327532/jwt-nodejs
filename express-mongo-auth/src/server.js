@@ -10,6 +10,7 @@ import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/users.routes.js";
 import webRoutes from "./routes/web.routes.js";
+import imagesRoutes from "./routes/images.routes.js";
 import seedRoles from "./utils/seedRoles.js";
 import seedUsers from "./utils/seedUsers.js";
 
@@ -39,6 +40,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/images", imagesRoutes);
 app.use("/", webRoutes);
 
 app.get("/health", (req, res) => {
