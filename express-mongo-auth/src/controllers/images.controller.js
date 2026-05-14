@@ -15,6 +15,7 @@ const MAX_SIZE_MB = 5;
 export const getUploadUrl = async (req, res) => {
   try {
     const { filename, contentType, sizeBytes } = req.body;
+    const fileSize = Number(sizeBytes);
 
     if (!filename || !contentType || !sizeBytes) {
       return res.status(400).json({ error: "Faltan datos del archivo" });
@@ -24,7 +25,11 @@ export const getUploadUrl = async (req, res) => {
       return res.status(400).json({ error: "Tipo no permitido" });
     }
 
-    if (sizeBytes > MAX_SIZE_MB * 1024 * 1024) {
+    if (Number.isNaN(fileSize)) {
+      return res.status(400).json({ error: "Tamaño de archivo inválido" });
+    }
+
+    if (fileSize > MAX_SIZE_MB * 1024 * 1024) {
       return res.status(400).json({ error: "Archivo demasiado grande" });
     }
 
@@ -35,13 +40,13 @@ export const getUploadUrl = async (req, res) => {
       Bucket: BUCKET,
       Key: key,
       ContentType: contentType,
-      ServerSideEncryption: "AES256",
     });
 
     const uploadUrl = await getSignedUrl(s3, command, { expiresIn: 300 });
 
     return res.json({ uploadUrl, key });
   } catch (error) {
+    console.error("getUploadUrl error:", error);
     return res.status(500).json({ error: error.message });
   }
 };
@@ -77,6 +82,7 @@ export const listImages = async (req, res) => {
 
     return res.json(items);
   } catch (error) {
+    console.error("listImages error:", error);
     return res.status(500).json({ error: error.message });
   }
 };
@@ -94,6 +100,7 @@ export const deleteImage = async (req, res) => {
 
     return res.json({ deleted: true });
   } catch (error) {
+    console.error("deleteImage error:", error);
     return res.status(500).json({ error: error.message });
   }
 };
